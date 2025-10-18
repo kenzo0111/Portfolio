@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vince Balce - Dashboard Portfolio</title>
+    <meta name="description" content="Full-stack software engineer passionate about system engineering and scalable solutions.">
+    <meta name="author" content="Vince Steven D. Balce">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="light-mode">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-profile">
+                <img id="sidebar-img" src="assets/img/Pogi.png" alt="Vince Steven D. Balce" class="sidebar-avatar">
+                <h3>Vince Steven D. Balce</h3>
+                <p>Full Stack Developer</p>
+            </div>
+            <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar" title="Close sidebar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="sidebar-link active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                Dashboard
+            </a>
+            <a href="#about" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                About
+            </a>
+            <a href="#education" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                Education
+            </a>
+            <a href="#experience" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                Experience
+            </a>
+            <a href="#projects" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                Projects
+            </a>
+            <a href="#hobbies" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                Hobbies & Skills
+            </a>
+            <a href="#contact" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Contact
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button id="theme-toggle" class="theme-toggle-sidebar" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Open sidebar" title="Open sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1>WebTech - Portfolio</h1>
+        <button id="theme-toggle-mobile" class="theme-toggle-mobile" aria-label="Toggle theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section">
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="dashboard-title">Welcome Back! 👋</h1>
+                    <p class="dashboard-subtitle">Here's what's happening with your portfolio today</p>
+                </div>
+            </div>
+
+            <!-- Magazine Grid Layout -->
+            <div class="magazine-grid">
+                <!-- Hero Card - Large -->
+                <article class="magazine-card hero-card">
+                    <div class="card-image-wrapper">
+                        <img id="hero-bg" src="assets/img/day-bg.png" alt="Background" class="card-bg-image">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content-overlay">
+                        <span class="card-label">Featured</span>
+                        <h2>Vince Steven D. Balce</h2>
+                        <p class="card-meta">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Vinzons, Camarines Norte, Bicol 4603, Philippines
+                        </p>
+                        <p class="card-description">System Analyst/Engineer · Full Stack Developer</p>
+                        <div class="card-actions">
+                            <a href="#contact" class="btn-primary">Get In Touch</a>
+                            <a href="#projects" class="btn-secondary">View Work</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- About Card -->
+                <article class="magazine-card about-card" id="about">
+                    <div class="card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <h3>About Me</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>I am a full-stack developer who designs and builds scalable, maintainable web systems. I focus on back-end architecture, efficient database design, and polished front-end experiences. I'm actively pursuing opportunities as a <strong>System Engineer</strong> or <strong>System Analyst</strong>.</p>
+                        <p>My toolkit includes JavaScript, PHP (Laravel), MySQL, and modern frontend workflows. I enjoy solving performance bottlenecks, improving system reliability, and turning product requirements into working, well-tested features.</p>
+                        <p>Outside of development I compete in online gaming and pursue continuous learning to stay current with emerging technologies. <a href="#contact">Get in touch</a> if you'd like to collaborate or discuss opportunities.</p>
+                    </div>
+                </article>
+
+                <!-- Stats Cards -->
+                <article class="magazine-card stat-card">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h4>4+</h4>
+                        <p>Projects Completed</p>
+                    </div>
+                </article>
+
+                <article class="magazine-card stat-card">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h4>6+</h4>
+                        <p>Technologies</p>
+                    </div>
+                </article>
+
+                <article class="magazine-card stat-card">
+                    <div class="stat-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h4>2+</h4>
+                        <p>Years Experience</p>
+                    </div>
+                </article>
+
+                <!-- Tech Stack Card -->
+                <article class="magazine-card tech-card">
+                    <div class="card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        <h3>Tech Stack</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="tech-tags">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS 5</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Certificate Card -->
+                <article class="magazine-card certificate-card">
+                    <div class="card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <h3>Certificate</h3>
+                    </div>
+                    <div class="card-body">
+                        <h2>BITSCON 2024</h2>
+                        <p>Bicol IT Students Congress (BITSCON) 2024 Certificate of Appreciation</p>
+                        <a href="assets/docs/balcevince@gmail.com.pdf" target="_blank" class="btn-link">
+                            View Certificate
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Education Section -->
+            <div class="section-divider" id="education">
+                <h2 class="section-heading">Education Journey</h2>
+            </div>
+            
+            <div class="timeline-grid">
+                <article class="timeline-card">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - Present</span>
+                        <h3>Bachelor of Science in Information System</h3>
+                        <p class="timeline-institution">Camarines Norte State College</p>
+                        <ul class="timeline-list">
+                            <li>InterCollegiate Meet 2025 Gold Medalist (Esports)</li>
+                            <li>Data Structures, Web Development, Database Management</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-card">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - 2023</span>
+                        <h3>General Academic Strand</h3>
+                        <p class="timeline-institution">Vinzons Pilot High School</p>
+                        <ul class="timeline-list">
+                            <li>Graduated with Honors</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-card">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2017 - 2020</span>
+                        <h3>Junior High School</h3>
+                        <p class="timeline-institution">Vinzons Pilot High School</p>
+                        <ul class="timeline-list">
+                            <li>With Honor</li>
+                            <li>Participated in Extra Curricular Activities</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-card">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2012 - 2017</span>
+                        <h3>Elementary School</h3>
+                        <p class="timeline-institution">Vinzons Pilot Elementary School</p>
+                        <ul class="timeline-list">
+                            <li>With Honor</li>
+                            <li>Participated in Extra Curricular Activities</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="section-divider" id="experience">
+                <h2 class="section-heading">Work Experience</h2>
+            </div>
+            
+            <div class="experience-grid">
+                <article class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Full Stack Developer</h3>
+                            <p class="experience-company">2AM Devs Inc.</p>
+                            <span class="experience-date">2024 - 2025</span>
+                        </div>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Developed responsive web applications using modern frameworks</li>
+                        <li>Collaborated with design team to implement UI/UX improvements</li>
+                        <li>Optimized application performance and database queries</li>
+                    </ul>
+                </article>
+
+                <article class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Full Stack Developer</h3>
+                            <p class="experience-company">SPMO System Development</p>
+                            <span class="experience-date">Ongoing Project</span>
+                        </div>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Developing system for SPMO to streamline procurement processes</li>
+                        <li>Designing scalable backend architecture with PHP and MySQL</li>
+                        <li>Implementing modern, user-friendly frontend interfaces</li>
+                    </ul>
+                </article>
+
+                <article class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Project Manager</h3>
+                            <p class="experience-company">3 Society</p>
+                            <span class="experience-date">2023 - 2024</span>
+                        </div>
+                    </div>
+                    <ul class="experience-list">
+                        <li>Defined project scope and objectives in collaboration, establishing clear deliverables and timelines. </li>
+                        <li>Monitored project progress using established methodologies, consistently mitigating risks to ensure successful on-time delivery of products.</li>
+                </article>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="section-divider" id="projects">
+                <h2 class="section-heading">Featured Projects</h2>
+            </div>
+            
+            <div class="projects-magazine-grid">
+                <article class="project-magazine-card">
+                    <div class="project-image">
+                        <img src="assets/img/data.png" alt="Sawatdi Cafe">
+                        <div class="project-overlay">
+                            <span class="project-label">E-Commerce</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sawatdi Cafe</h3>
+                        <p>Full-stack e-commerce and reservation platform with online ordering and event management.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-magazine-card">
+                    <div class="project-image">
+                        <img src="assets/img/image.png" alt="Hospital Triage System">
+                        <div class="project-overlay">
+                            <span class="project-label">Healthcare</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Hospital Triage System</h3>
+                        <p>FIFO-based patient management system for emergency patient prioritization.</p>
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">Algorithms</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-magazine-card">
+                    <div class="project-image">
+                        <img src="assets/img/modent.png" alt="Moderntech Salon">
+                        <div class="project-overlay">
+                            <span class="project-label">Booking</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Moderntech Salon</h3>
+                        <p>Modern booking and client management platform with integrated payment processing.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-magazine-card">
+                    <div class="project-image">
+                        <img src="assets/img/spmo.png" alt="SPMO System">
+                        <div class="project-overlay">
+                            <span class="project-label">Enterprise</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>SPMO Inventory System</h3>
+                        <p>Enterprise-level procurement and inventory management system.</p>
+                        <div class="project-tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Laravel</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Hobbies & Skills Section -->
+            <div class="section-divider" id="hobbies">
+                <h2 class="section-heading">Hobbies & Skills</h2>
+            </div>
+            
+            <div class="hobbies-skills-grid">
+                <article class="hobby-skill-card">
+                    <div class="card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <h3>Hobbies</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="hobby-list">
+                            <li>Competitive Gaming (Esports)</li>
+                            <li>Continuous Learning of New Technologies</li>
+                            <li>Exploring Open-Source Projects</li>
+                            <li>Photography and Digital Art</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="hobby-skill-card">
+                    <div class="card-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        <h3>Skills</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="skill-tags">
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Team Collaboration</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">System Analysis</span>
+                            <span class="skill-tag">Database Design</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="section-divider" id="contact">
+                <h2 class="section-heading">Get In Touch</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <article class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <h4>Email</h4>
+                    <a href="mailto:balcevince@gmail.com">balcevince@gmail.com</a>
+                </article>
+
+                <article class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h4>Phone</h4>
+                    <a href="tel:+639086265799">+63 908 626 5799</a>
+                </article>
+
+                <article class="contact-info-card">
+                    <div class="contact-icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h4>Location</h4>
+                    <p>Camarines Norte, Philippines</p>
+                </article>
+
+                <article class="contact-social-card">
+                    <h4>Connect With Me</h4>
+                    <div class="social-links-grid">
+                        <a href="https://github.com/kenzo0111" target="_blank" rel="noopener noreferrer" class="social-link-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/vince-steven-d-balce-a93602341/" target="_blank" rel="noopener noreferrer" class="social-link-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

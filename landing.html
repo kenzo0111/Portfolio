@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome - Play to Enter</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1a0b2e 0%,
+          #2d1b3d 50%,
+          #4a1942 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Cyber grid background */
+      body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            rgba(139, 46, 143, 0.1) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(139, 46, 143, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        z-index: 0;
+      }
+
+      /* Animated background glows */
+      body::after {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(139, 46, 143, 0.3),
+          transparent
+        );
+        top: -150px;
+        left: -150px;
+        animation: float 20s infinite ease-in-out;
+        filter: blur(80px);
+        z-index: 0;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(100px, 100px) scale(1.2);
+        }
+      }
+
+      .landing-container {
+        background: rgba(20, 10, 30, 0.9);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        border-radius: 32px;
+        padding: 48px;
+        max-width: 540px;
+        width: 100%;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(139, 46, 143, 0.4), 0 0 60px rgba(139, 46, 143, 0.3),
+          inset 0 0 80px rgba(139, 46, 143, 0.05);
+        text-align: center;
+        animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(139, 46, 143, 0.4);
+      }
+
+      /* Cyber glow effect on container */
+      .landing-container::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(45deg, #8b2e8f, #e63946, #8b2e8f, #e63946);
+        background-size: 300% 300%;
+        border-radius: 32px;
+        z-index: -1;
+        opacity: 0.4;
+        filter: blur(25px);
+        animation: gradientShift 6s infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .landing-header {
+        margin-bottom: 36px;
+      }
+
+      .emoji-icon {
+        font-size: 4rem;
+        margin-bottom: 16px;
+        animation: bounce 2s infinite;
+        filter: drop-shadow(0 0 20px rgba(217, 70, 239, 0.6));
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .landing-title {
+        font-size: 2.75rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #d946ef, #e63946, #f72735);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+        filter: drop-shadow(0 0 15px rgba(217, 70, 239, 0.4));
+      }
+
+      .landing-subtitle {
+        font-size: 1.125rem;
+        color: #b8a3c9;
+        margin-bottom: 8px;
+        font-weight: 500;
+        text-shadow: 0 0 15px rgba(184, 163, 201, 0.4);
+      }
+
+      .challenge-text {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #ff4d6d;
+        margin-top: 16px;
+        padding: 12px 24px;
+        background: rgba(230, 57, 70, 0.15);
+        border-radius: 12px;
+        display: inline-block;
+        border: 1px solid rgba(230, 57, 70, 0.4);
+        box-shadow: 0 0 30px rgba(230, 57, 70, 0.3);
+        text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+      }
+
+      .game-status {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #d946ef;
+        margin-bottom: 28px;
+        padding: 18px 24px;
+        background: rgba(139, 46, 143, 0.15);
+        border-radius: 16px;
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4),
+          0 0 30px rgba(139, 46, 143, 0.4);
+        border: 2px solid rgba(139, 46, 143, 0.5);
+        text-shadow: 0 0 15px rgba(217, 70, 239, 0.6);
+      }
+
+      .game-board {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-bottom: 28px;
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        background: rgba(139, 46, 143, 0.08);
+        border-radius: 20px;
+        border: 1px solid rgba(139, 46, 143, 0.4);
+        box-shadow: inset 0 0 40px rgba(139, 46, 143, 0.15),
+          0 0 40px rgba(139, 46, 143, 0.25);
+      }
+
+      .game-cell {
+        aspect-ratio: 1;
+        background: rgba(30, 15, 45, 0.7);
+        border: 3px solid rgba(139, 46, 143, 0.5);
+        border-radius: 16px;
+        font-size: 3.5rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d946ef;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
+          inset 0 0 25px rgba(139, 46, 143, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .game-cell::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 46, 143, 0.4),
+          rgba(230, 57, 70, 0.4)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .game-cell:hover:not(:disabled)::before {
+        opacity: 1;
+      }
+
+      .game-cell:hover:not(:disabled) {
+        border-color: #d946ef;
+        transform: scale(1.08) translateY(-2px);
+        box-shadow: 0 8px 30px rgba(217, 70, 239, 0.6),
+          0 0 40px rgba(217, 70, 239, 0.4),
+          inset 0 0 30px rgba(139, 46, 143, 0.3);
+      }
+
+      .game-cell:active:not(:disabled) {
+        transform: scale(1.02);
+      }
+
+      .game-cell:disabled {
+        cursor: not-allowed;
+        opacity: 0.9;
+      }
+
+      .game-cell.x {
+        color: #ff4d6d;
+        text-shadow: 0 0 25px rgba(255, 77, 109, 1);
+        animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .game-cell.o {
+        color: #d946ef;
+        text-shadow: 0 0 25px rgba(217, 70, 239, 1);
+        animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes popIn {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .game-reset {
+        width: 100%;
+        padding: 16px 32px;
+        background: linear-gradient(135deg, #8b2e8f, #6b1e6f);
+        color: white;
+        border: 2px solid rgba(139, 46, 143, 0.6);
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 1.0625rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 20px rgba(139, 46, 143, 0.5),
+          0 0 30px rgba(139, 46, 143, 0.4);
+        letter-spacing: 0.3px;
+        text-shadow: 0 0 15px rgba(217, 70, 239, 0.6);
+      }
+
+      .game-reset:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 35px rgba(139, 46, 143, 0.7),
+          0 0 50px rgba(139, 46, 143, 0.6);
+        border-color: #d946ef;
+      }
+
+      .game-reset:active {
+        transform: translateY(-1px);
+      }
+
+      #test-win {
+        background: linear-gradient(135deg, #e63946, #c41e3a);
+        border-color: rgba(230, 57, 70, 0.6);
+        box-shadow: 0 4px 20px rgba(230, 57, 70, 0.5),
+          0 0 30px rgba(230, 57, 70, 0.4);
+      }
+
+      #test-win:hover {
+        box-shadow: 0 8px 35px rgba(230, 57, 70, 0.7),
+          0 0 50px rgba(230, 57, 70, 0.6);
+        border-color: #ff4d6d;
+      }
+
+      .skip-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #d946ef;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        font-size: 0.9375rem;
+        text-shadow: 0 0 15px rgba(217, 70, 239, 0.6);
+      }
+
+      .skip-link:hover {
+        background: rgba(139, 46, 143, 0.25);
+        gap: 12px;
+        box-shadow: 0 0 30px rgba(139, 46, 143, 0.4);
+      }
+
+      .win-animation {
+        animation: celebrate 0.6s ease;
+        background: linear-gradient(135deg, #10b981, #059669) !important;
+        color: white !important;
+        box-shadow: 0 0 50px rgba(16, 185, 129, 0.8) !important;
+      }
+
+      @keyframes celebrate {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.05) rotate(-2deg);
+        }
+        75% {
+          transform: scale(1.05) rotate(2deg);
+        }
+      }
+
+      .confetti {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: #e63946;
+        border-radius: 50%;
+        animation: confetti-fall 3s linear;
+        z-index: 9999;
+        box-shadow: 0 0 15px currentColor;
+      }
+
+      @keyframes confetti-fall {
+        to {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .landing-container {
+          padding: 36px 24px;
+          border-radius: 24px;
+        }
+
+        .landing-title {
+          font-size: 2.25rem;
+        }
+
+        .emoji-icon {
+          font-size: 3rem;
+        }
+
+        .game-cell {
+          font-size: 2.75rem;
+        }
+
+        .game-board {
+          padding: 16px;
+          gap: 10px;
+        }
+
+        .challenge-text {
+          font-size: 1.125rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="landing-container">
+      <div class="landing-header">
+        <div class="emoji-icon">🎮</div>
+        <h1 class="landing-title">Welcome!</h1>
+        <p class="landing-subtitle">Web System and technologies Midterm Project</p>
+        <p class="challenge-text">Beat me at Tic Tac Toe to enter!</p>
+      </div>
+
+      <div class="game-status" id="game-status">Your Turn (X)</div>
+
+      <div class="game-board" id="game-board">
+        <button class="game-cell" data-index="0" title="Cell 1"></button>
+        <button class="game-cell" data-index="1" title="Cell 2"></button>
+        <button class="game-cell" data-index="2" title="Cell 3"></button>
+        <button class="game-cell" data-index="3" title="Cell 4"></button>
+        <button class="game-cell" data-index="4" title="Cell 5"></button>
+        <button class="game-cell" data-index="5" title="Cell 6"></button>
+        <button class="game-cell" data-index="6" title="Cell 7"></button>
+        <button class="game-cell" data-index="7" title="Cell 8"></button>
+        <button class="game-cell" data-index="8" title="Cell 9"></button>
+      </div>
+
+      <div class="button-group">
+        <button class="game-reset" id="game-reset">Reset Game</button>
+      </div>
+
+      <a href="portfolio.html" class="skip-link">Skip Challenge →</a>
+    </div>
+
+    <script>
+      const gameBoard = document.getElementById('game-board')
+      const gameStatus = document.getElementById('game-status')
+      const gameReset = document.getElementById('game-reset')
+      const gameCells = document.querySelectorAll('.game-cell')
+
+      let board = ['', '', '', '', '', '', '', '', '']
+      let currentPlayer = 'X'
+      let gameActive = true
+
+      const winningConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ]
+
+      function createConfetti() {
+        for (let i = 0; i < 50; i++) {
+          setTimeout(() => {
+            const confetti = document.createElement('div')
+            confetti.className = 'confetti'
+            confetti.style.left = Math.random() * 100 + '%'
+            confetti.style.background = [
+              '#e63946',
+              '#d946ef',
+              '#8b2e8f',
+              '#f72735',
+            ][Math.floor(Math.random() * 4)]
+            confetti.style.animationDelay = Math.random() * 0.5 + 's'
+            document.body.appendChild(confetti)
+
+            setTimeout(() => confetti.remove(), 3000)
+          }, i * 30)
+        }
+      }
+
+      function handleCellClick(e) {
+        const clickedCell = e.target
+        const clickedCellIndex = parseInt(
+          clickedCell.getAttribute('data-index')
+        )
+
+        if (
+          board[clickedCellIndex] !== '' ||
+          !gameActive ||
+          currentPlayer === 'O'
+        ) {
+          return
+        }
+
+        // Player move
+        board[clickedCellIndex] = currentPlayer
+        clickedCell.textContent = currentPlayer
+        clickedCell.classList.add(currentPlayer.toLowerCase())
+        clickedCell.disabled = true
+
+        if (checkResult()) return
+
+        // AI move
+        currentPlayer = 'O'
+        gameStatus.textContent = 'AI is thinking...'
+
+        setTimeout(() => {
+          makeAIMove()
+          checkResult()
+        }, 500)
+      }
+
+      function makeAIMove() {
+        const availableCells = board
+          .map((cell, index) => (cell === '' ? index : null))
+          .filter((val) => val !== null)
+
+        if (availableCells.length === 0) return
+
+        // Simple AI: random move
+        const randomIndex =
+          availableCells[Math.floor(Math.random() * availableCells.length)]
+
+        board[randomIndex] = 'O'
+        gameCells[randomIndex].textContent = 'O'
+        gameCells[randomIndex].classList.add('o')
+        gameCells[randomIndex].disabled = true
+
+        currentPlayer = 'X'
+        if (gameActive) {
+          gameStatus.textContent = 'Your Turn (X)'
+        }
+      }
+
+      function checkResult() {
+        let roundWon = false
+        let winner = ''
+
+        for (let i = 0; i < winningConditions.length; i++) {
+          const [a, b, c] = winningConditions[i]
+          if (board[a] === '' || board[b] === '' || board[c] === '') {
+            continue
+          }
+          if (board[a] === board[b] && board[b] === board[c]) {
+            roundWon = true
+            winner = board[a]
+            break
+          }
+        }
+
+        if (roundWon) {
+          gameActive = false
+          if (winner === 'X') {
+            gameStatus.textContent = '🎉 You Win! Redirecting...'
+            gameStatus.classList.add('win-animation')
+            createConfetti()
+
+            setTimeout(() => {
+              window.location.replace('portfolio.html')
+            }, 2000)
+          } else {
+            gameStatus.textContent = 'AI Wins! Try Again! 🤖'
+          }
+          return true
+        }
+
+        if (!board.includes('')) {
+          gameStatus.textContent = "It's a Draw! Try Again! 🤝"
+          gameActive = false
+          return true
+        }
+
+        return false
+      }
+
+      function resetGame() {
+        board = ['', '', '', '', '', '', '', '', '']
+        currentPlayer = 'X'
+        gameActive = true
+        gameStatus.textContent = 'Your Turn (X)'
+        gameStatus.classList.remove('win-animation')
+
+        gameCells.forEach((cell) => {
+          cell.textContent = ''
+          cell.disabled = false
+          cell.classList.remove('x', 'o')
+        })
+      }
+
+      // Add event listeners
+      gameCells.forEach((cell) => {
+        cell.addEventListener('click', handleCellClick)
+      })
+
+      gameReset.addEventListener('click', resetGame)
+
+      // Test win button
+      const testWinBtn = document.getElementById('test-win')
+      if (testWinBtn) {
+        testWinBtn.addEventListener('click', () => {
+          gameStatus.textContent = '🎉 You Win! Redirecting...'
+          gameStatus.classList.add('win-animation')
+          createConfetti()
+          gameActive = false
+
+          setTimeout(() => {
+            window.location.replace('portfolio.html')
+          }, 2000)
+        })
+      }
+    </script>
+  </body>
+</html>
