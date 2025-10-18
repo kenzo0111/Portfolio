@@ -7,7 +7,17 @@
     <meta name="description" content="Full-stack software engineer passionate about system engineering and scalable solutions.">
     <meta name="author" content="Vince Steven D. Balce">
     
-    <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <style>
+        /* Responsive about-card short variant */
+        .about-full { display: block; }
+        .about-short { display: none; }
+        @media (max-width: 640px) {
+            .about-full { display: none; }
+            .about-short { display: block; }
+            .about-card .btn-primary { display: block; width: 100%; box-sizing: border-box; }
+        }
+        </style>
     <link rel="icon" type="image/x-icon" href="assets/img/Pogi.png">
 </head>
 <body class="light-mode">
@@ -171,7 +181,9 @@
                         <h3>About Me</h3>
                     </div>
                     <div class="card-body">
-                        <p>I'm a full-stack developer and systems-minded engineer who builds scalable, reliable web applications. I specialize in back-end architecture, database design, and clear front-end experiences using tools like JavaScript, PHP (Laravel), and MySQL. <a href="#contact">Get in touch</a> to collaborate or discuss opportunities.</p>
+                        <p class="about-full">Systems-minded full‑stack developer experienced in designing, transactional back-ends (PHP/Laravel), relational schema design (MySQL), and performant front-ends with JavaScript. I optimize for reliability and scale using query optimization, caching, transactional integrity, and containerized deployments with CI pipelines. I’m available for architecture reviews, back-end builds, and performance tuning.</p>
+                        <p class="about-short">Systems-minded full‑stack engineer focused on reliable, scalable web systems — available for architecture reviews and performance tuning.</p>
+                        <a href="mailto:balcevince@gmail.com" class="btn-primary" aria-label="Email Vince Balce">Let’s talk</a>
                     </div>
                 </article>
 
