@@ -531,6 +531,11 @@ body::before {
   line-height: 1.7;
 }
 
+/* Justify text for the About Me card specifically */
+.about-card .card-body p {
+  text-align: justify;
+}
+
 .card-body strong {
   color: var(--accent-primary);
   font-weight: 600;
@@ -1081,6 +1086,29 @@ a:hover::after {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-bottom: 48px;
+}
+
+/* Skill assessment list styling */
+.skill-assessment {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.04);
+}
+
+.assessment-heading {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.assessment-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
 }
 
 .contact-info-card {
